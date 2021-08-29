@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<body>
+    <div th:fragment="customerReviews">
+        <table>
+            <thead>
+                <tr><th>Customer Reviews</th></tr>
+            </thead>
+            <tbody>
+                <tr th:each="cr: ${ customerReviews}">
+                    <td th:insert="customerReview :: customerReview(${cr})" />
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta charset="UTF-8" />
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<body>
+    <div th:fragment="customerReview(cr)">
+        <p th:text="${cr.title}"></p>
+        <p th:text="${cr.comments}"></p>
+    </div>
+</body>
+</html>
