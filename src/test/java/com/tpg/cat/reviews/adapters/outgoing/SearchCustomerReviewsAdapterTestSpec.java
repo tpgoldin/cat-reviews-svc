@@ -2,6 +2,7 @@ package com.tpg.cat.reviews.adapters.outgoing;
 
 import com.tpg.cat.reviews.GivenWhenThen;
 import com.tpg.cat.reviews.application.model.CustomerReviewModel;
+import com.tpg.cat.reviews.domain.model.VerifiedReview;
 import com.tpg.cat.reviews.infrastructure.persistence.CustomerReviewEntityFixture;
 import com.tpg.cat.reviews.infrastructure.persistence.CustomerReviewsRepository;
 import lombok.AccessLevel;
@@ -11,6 +12,7 @@ import org.mockito.Mockito;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.tpg.cat.reviews.domain.model.VerifiedReview.VERIFIED;
 import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
@@ -67,8 +69,8 @@ public class SearchCustomerReviewsAdapterTestSpec implements GivenWhenThen<Searc
     public SearchCustomerReviewsAdapterTestSpec searchingForExistingCustomerReviews() {
         Mockito.when(customerReviewsRepository.findByCompanyReference(companyReference))
                 .thenReturn(singletonList(customerReviewEntity(1312L, "Fixed loose connection",
-                        "Fixed loose connections in fuse box.", companyReference,
-                        true, NOW.minusDays(10))));
+                        "Fixed loose connections in fuse box.", "CR8", companyReference,
+                        VERIFIED, NOW.minusDays(10))));
 
         actual = searchCustomerReviewsAdapter.findByCompanyReference(companyReference);
 

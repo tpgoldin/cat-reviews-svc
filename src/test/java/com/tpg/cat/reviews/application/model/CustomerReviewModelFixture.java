@@ -1,15 +1,17 @@
 package com.tpg.cat.reviews.application.model;
 
+import com.tpg.cat.reviews.domain.model.VerifiedReview;
+
 import java.time.LocalDateTime;
 
 public interface CustomerReviewModelFixture {
     default CustomerReviewModel customerReviewModel(String title, LocalDateTime reviewDate,
-                                                    boolean verifiedReview, String comments,
+                                                    VerifiedReview verifiedReview, String comments,
                                                     ScoreBreakdownModel scoreBreakdownModel,
                                                     String location) {
         return CustomerReviewModel.builder()
                 .title(title)
-                .verifiedReview(verifiedReview)
+                .verifiedReview(verifiedReview.getDescription())
                 .comments(comments)
                 .scoreBreakdownModel(scoreBreakdownModel)
                 .location(location)

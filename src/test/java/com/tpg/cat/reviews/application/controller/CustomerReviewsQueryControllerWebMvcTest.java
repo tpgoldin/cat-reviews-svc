@@ -4,6 +4,7 @@ import com.tpg.cat.reviews.application.model.CustomerReviewModel;
 import com.tpg.cat.reviews.application.model.CustomerReviewModelFixture;
 import com.tpg.cat.reviews.application.model.ScoreBreakdownModel;
 import com.tpg.cat.reviews.application.model.ScoreBreakdownModelFixture;
+import com.tpg.cat.reviews.domain.model.VerifiedReview;
 import com.tpg.cat.reviews.domain.queries.SearchCustomerReviews;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import static com.tpg.cat.reviews.domain.model.ReviewAttribute.TIMEKEEPING;
 import static com.tpg.cat.reviews.domain.model.ReviewAttribute.WORKMANSHIP;
+import static com.tpg.cat.reviews.domain.model.VerifiedReview.VERIFIED;
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
 import static org.mockito.Mockito.when;
@@ -38,8 +40,9 @@ public class CustomerReviewsQueryControllerWebMvcTest implements ScoreBreakdownM
     public void givenUserWantsToViewCompanyReviews_whenQueryingACompanyReviews_thenCompanyReviewsAreDisplayed() throws Exception {
         ScoreBreakdownModel scoreBreakdownModel = scoreBreakdownModel(asList(TIMEKEEPING, WORKMANSHIP));
 
-        List<CustomerReviewModel> customerReviews = singletonList(customerReviewModel("Installed an inline bathroom extractor fan", NOW.minusMonths(2), true,
-                "Very pleased with the work carried out.", scoreBreakdownModel, "CR8"));
+        List<CustomerReviewModel> customerReviews = singletonList(customerReviewModel("Installed an inline bathroom extractor fan",
+                NOW.minusMonths(2), VERIFIED,"Very pleased with the work carried out.",
+                scoreBreakdownModel, "CR8"));
 
         String companyRef = "SKDJF1285";
 

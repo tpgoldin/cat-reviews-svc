@@ -1,5 +1,6 @@
 package com.tpg.cat.reviews.application.model;
 
+import com.tpg.cat.reviews.domain.model.VerifiedReview;
 import lombok.Builder;
 import lombok.Value;
 
@@ -10,7 +11,7 @@ import java.time.LocalDateTime;
 public class CustomerReviewModel {
     String title;
     LocalDateTime reviewDate;
-    boolean verifiedReview;
+    String verifiedReview;
     String comments;
     ScoreBreakdownModel scoreBreakdownModel;
     String location;

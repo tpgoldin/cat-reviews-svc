@@ -37,7 +37,7 @@ public class SearchCustomerReviewsAdapter implements SearchCustomerReviews {
 
         CustomerReviewModel customerReviewModel = CustomerReviewModel.builder()
                 .title(entity.getTitle())
-                .verifiedReview(entity.isVerifiedReview())
+                .verifiedReview(entity.getVerifiedReview().getDescription())
                 .comments(entity.getComments())
                 .location(entity.getLocation())
                 .scoreBreakdownModel(scoreBreakdownModel)
